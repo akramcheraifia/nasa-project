@@ -1,12 +1,12 @@
 {
   "name": "nasa-project",
   "version": "1.0.0",
-  "description": "nasa mission control webstie",
-  "main": "index.js",
+  "description": "nasa mission control website",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
-    "watch":"nodemon src/server.js"
+    "watch": "nodemon src/server.js"
   },
   "keywords": [],
   "author": "",
