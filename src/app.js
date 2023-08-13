@@ -10,6 +10,6 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(planetRouter);
-app.use(lunchesRouter);
+app.use("/planets", planetRouter);
+app.use("/lunches", lunchesRouter);
 module.exports = app;
