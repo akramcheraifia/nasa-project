@@ -1,4 +1,9 @@
-const { lunches, addNewLunch } = require("../../models/lunches.model");
+const {
+  lunches,
+  addNewLunch,
+  isLunchExist,
+  abortLunchById,
+} = require("../../models/lunches.model");
 
 function getAllLunches(req, res) {
   return res.status(200).json(Array.from(lunches.values()));
@@ -27,4 +32,15 @@ function httpAddNewLunch(req, res) {
   return res.status(201).json(newLunch);
 }
 
-module.exports = { getAllLunches, httpAddNewLunch };
+function httpAbortLunch(req, res) {
+  const lunchId = Number(req.params.id);
+  if (!isLunchExist(lunchId)) {
+    return res.status(404).json({
+      error: "lunch dosent exist",
+    });
+  }
+  const aborted = abortLunchById(lunchId);
+  return res.status(200).json(aborted);
+}
+
+module.exports = { getAllLunches, httpAddNewLunch, httpAbortLunch };

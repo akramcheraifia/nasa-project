@@ -13,6 +13,10 @@ const lunch = {
 
 lunches.set(lunch.flightNumber, lunch);
 
+function isLunchExist(lunchId) {
+  return lunches.has(lunchId);
+}
+
 function addNewLunch(lunch) {
   latesFlightNumber++;
   lunches.set(
@@ -26,7 +30,16 @@ function addNewLunch(lunch) {
   );
 }
 
+function abortLunchById(lunchId) {
+  const aborted = lunches.get(lunchId);
+  aborted.upcoming = false;
+  aborted.success = false;
+  return aborted;
+}
+
 module.exports = {
+  isLunchExist,
   lunches,
   addNewLunch,
+  abortLunchById,
 };
